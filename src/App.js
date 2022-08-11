@@ -43,7 +43,7 @@ function App(props) {
         const transaction = {
           actions: [
             {
-              account: "eden.fractal",
+              account: "alienfractal",
               name: "sign",
               authorization: [
                 {
@@ -77,7 +77,7 @@ function App(props) {
           const transaction = {
             actions: [
               {
-                account: "eden.fractal",
+                account: "alienfractal",
                 name: "submitcons",
                 authorization: [
                   {
@@ -108,7 +108,7 @@ function App(props) {
           const transaction = {
             actions: [
               {
-                account: "eden.fractal",
+                account: "alienfractal",
                 name: "submitcons",
                 authorization: [
                   {
@@ -213,7 +213,7 @@ function App(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Eden Contributor Agreement{" "}
+            AW Contributor Agreement{" "}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Agreement could be accessed via this{" "}
