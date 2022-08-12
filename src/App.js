@@ -43,7 +43,7 @@ function App(props) {
         const transaction = {
           actions: [
             {
-              account: "alienfractal",
+              account: "fractal.moon",
               name: "sign",
               authorization: [
                 {
@@ -77,7 +77,7 @@ function App(props) {
           const transaction = {
             actions: [
               {
-                account: "alienfractal",
+                account: "fractal.moon",
                 name: "submitcons",
                 authorization: [
                   {
@@ -108,7 +108,7 @@ function App(props) {
           const transaction = {
             actions: [
               {
-                account: "alienfractal",
+                account: "fractal.moon",
                 name: "submitcons",
                 authorization: [
                   {
