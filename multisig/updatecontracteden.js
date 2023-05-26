@@ -55,12 +55,12 @@ async function deployContract({ account, contractDir }) {
       name: "setcode",
       authorization: [
         {
-          actor: "eden.fractal",
+          actor: "pollpollpoll",
           permission: "active",
         },
       ],
       data: {
-        account: "eden.fractal",
+        account: "pollpollpoll",
         vmtype: 0,
         vmversion: 0,
         code: wasm,
@@ -71,12 +71,12 @@ async function deployContract({ account, contractDir }) {
       name: "setabi",
       authorization: [
         {
-          actor: "eden.fractal",
+          actor: "pollpollpoll",
           permission: "active",
         },
       ],
       data: {
-        account: "eden.fractal",
+        account: "pollpollpoll",
         abi: Buffer.from(buffer.asUint8Array()).toString(`hex`),
       },
     },
@@ -135,7 +135,7 @@ async function deployContract({ account, contractDir }) {
           name: "setcode",
           authorization: [
             {
-              actor: "eden.fractal",
+              actor: "pollpollpoll",
               permission: "active",
             },
           ],
@@ -146,7 +146,7 @@ async function deployContract({ account, contractDir }) {
           name: "setabi",
           authorization: [
             {
-              actor: "eden.fractal",
+              actor: "pollpollpoll",
               permission: "active",
             },
           ],

@@ -30,7 +30,6 @@ const style = {
 };
 
 const inputDefaults = {
-  delegate: { type: 'string', default: "" },
   groupnumber: { type: 'number', default: null },
   vote1: { type: 'string', default: "" },
   vote2: { type: 'string', default: "" },
@@ -67,7 +66,7 @@ function App(props) {
         const transaction = {
           actions: [
             {
-              account: "eden.fractal",
+              account: "pollpollpoll",
               name: "sign",
               authorization: [
                 {
@@ -101,7 +100,7 @@ function App(props) {
           const transaction = {
             actions: [
               {
-                account: "eden.fractal",
+                account: "pollpollpoll",
                 name: "submitcons",
                 authorization: [
                   {
@@ -115,21 +114,7 @@ function App(props) {
                   rankings: voterlist,
                 },
               },
-              {
-                account: "edenfractest",
-                name: "electdeleg",
-                authorization: [
-                  {
-                    actor: displayaccountname(), // use account that was logged in
-                    permission: "active",
-                  },
-                ],
-                data: {
-                  elector: displayaccountname(),
-                  delegate: inputs.delegate,
-                  groupnr: parseInt(inputs.groupnumber),
-                },
-              },
+             
             ],
           };
           await activeUser.signTransaction(transaction, {
@@ -146,7 +131,7 @@ function App(props) {
           const transaction = {
             actions: [
               {
-                account: "eden.fractal",
+                account: "pollpollpoll",
                 name: "submitcons",
                 authorization: [
                   {
@@ -160,21 +145,7 @@ function App(props) {
                   rankings: voterlist,
                 },
               },
-              {
-                account: "edenfractest",
-                name: "electdeleg",
-                authorization: [
-                  {
-                    actor: displayaccountname(), // use account that was logged in
-                    permission: "active",
-                  },
-                ],
-                data: {
-                  elector: displayaccountname(),
-                  delegate: inputs.delegate,
-                  groupnr: parseInt(inputs.groupnumber),
-                },
-              },
+              
             ],
 
           };
@@ -344,8 +315,8 @@ function App(props) {
         </Box>
       </Modal>
       <div class="main-menu">
-      <button onClick={() => window.open(`https://mindweb.io/EdenFractalProposals.html`, "_blank")} className="menu-trigger"  >
-                <span>MindMap</span>
+      <button onClick={() => window.open(`https://google.com`, "_blank")} className="menu-trigger"  >
+                <span>Google</span>
               </button>
            
             {accountname == "" ? (
@@ -363,16 +334,8 @@ function App(props) {
           </div>
 
       <header className="App-header">
-          <div class="input-wrapper">
-          <input
-            onChange={(e) => setInputs({ delegate: e.target.value })}
-            defaultValue={inputs.delegate ?? ""}
-            label="Delegate"
-            placeholder="Delegate"
-            class="input-field"
-
-          />
-          </div>
+         
+         
           <div class="input-wrapper">
           <input
             onChange={(e) => setInputs({ groupnumber: e.target.value })}

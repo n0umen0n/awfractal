@@ -5,6 +5,7 @@ import App from './App';
 import Admin from './Admin';
 import reportWebVitals from './reportWebVitals';
 import { UALProvider, withUAL } from 'ual-reactjs-renderer'
+import { Wax } from "@alienworlds/ual-wax";
 import { Anchor } from 'ual-anchor'
 import {
   BrowserRouter,
@@ -15,14 +16,14 @@ import {
 const appName = "Fractal Voting";
 
 const chain = {
-  chainId: "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906",
+  chainId: "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4",
   rpcEndpoints: [
     {
       //protocol: "https",
       //host: "eos.greymass.com",
       //http://eos.api.eosnation.io
       protocol: "https",
-      host: "eos.api.eosnation.vitt",
+      host: "wax.eosdac.io",
       port: "",
     },
   ],
