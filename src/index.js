@@ -32,10 +32,12 @@ const chain = {
 const anchor = new Anchor([chain], {
   appName,
 });
+const wax = new Wax([chain]);
+
 
 const supportedChains = [chain];
 const supportedAuthenticators = [
-  anchor
+  anchor, wax
 ];
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
