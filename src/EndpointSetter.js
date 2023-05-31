@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from "react";
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+
 import './endpoint.css';
 
 export default function EndpointSetter() {
@@ -6,20 +12,29 @@ export default function EndpointSetter() {
         console.log(e.target.value)
         localStorage.setItem("endpoint", e.target.value)
         window.location.reload();
-      }
-    return(
-        <div>
-        <select id="dropdown" onChange={handleDropdownChange} style={{"border":"2px solid 5024ff99", "padding":"20px 5px 20px 5px"}}>
-          <option value="" selected disabled hidden>Pick endpoint</option>
-          <option value="https://chain.wax.io">Chain Wax</option>
-          <option value="https://wax.cryptolions.io">Cryptolions</option>
-          <option value="https://wax.eosdac.io">Eosdac</option>
-          <option value="https://wax.pink.qq">Pinkqq</option>
-          <option value="https://api.wax.bountyblok.io">Bountyblok</option>
-          <option value="https://wax.eoseoul.io">EOSeoul</option>
-          <option value="https://wax.eosusa.io">EOSUsa</option>
-        </select>
-      </div>
+    }
+
+    return (
+      <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+            <Select
+                shrink={false}
+                defaultValue={localStorage.getItem("endpoint")}
+                labelId="demo-simple-select-label"
+                onChange={handleDropdownChange}
+                sx={{ backgroundColor:'white', color:"black" }}
+                >
+                <MenuItem value="https://chain.wax.io">Chain Wax</MenuItem>
+                <MenuItem value="https://wax.cryptolions.io">Cryptolions</MenuItem>
+                <MenuItem value="https://wax.eosdac.io">Eosdac</MenuItem>
+                <MenuItem value="https://wax.pink.qq">Pinkqq</MenuItem>
+                <MenuItem value="https://api.wax.bountyblok.io">Bountyblok</MenuItem>
+                <MenuItem value="https://wax.eoseoul.io">EOSeoul</MenuItem>
+                <MenuItem value="https://wax.eosusa.io">EOSUsa</MenuItem>
+            </Select>
+            </FormControl>
+
+            </Box>
+
     )
 }
-
