@@ -16,6 +16,7 @@ import copy from "copy-to-clipboard";
 import { useSearchParamsState } from 'react-use-search-params-state'
 import * as objectSha from 'object-sha'
 import { CSSTransition } from "react-transition-group";
+import EndpointSetter from './EndpointSetter'
 
 const style = {
   position: "absolute",
@@ -40,7 +41,9 @@ const inputDefaults = {
 }
 
 function App(props) {
+  let endpoint;
 
+  endpoint = localStorage.getItem("endpoint")
   const [landing, setLanding] = useState(false);
   const [showButton, setShowButton] = useState(true);
 
@@ -48,7 +51,11 @@ function App(props) {
   const [accountname, setAccountName] = useState("");
   const [consensusId, setConsensusId] = useState("");
   const [open, setOpen] = React.useState(false);
+  const [openendpoints, setOpenendpoints] = React.useState(false);
+
   const handleClose = () => setOpen(false);
+  const handleCloseendpoints = () => setOpenendpoints(false);
+
   const nodeRef = useRef(null);
 
 
@@ -58,6 +65,9 @@ function App(props) {
     setConsensusId(inputsHash.substring(0, 2) + " " + inputsHash.substring(2, 4) +
       " " + inputsHash.substring(4, 6) + " " + inputsHash.substring(6, 8));
     setOpen(true);
+  }
+  const handleOpenendpoints = () => {
+    setOpenendpoints(true);
   }
   /*
   const sign = async () => {
@@ -245,8 +255,8 @@ function App(props) {
       {showButton &&
         <header className="App-header">
 
-          <div class="zeos"><img src="edenlogo1.png" width="350px"/></div>
-          <img src="edensymbol.png" width="18%" class="logo" />
+          <div class="zeos"><img src="aliens.png" width="350px"/></div>
+          <img src="symbol.png" width="15%" class="logo" />
           <button class="button-64 votebutton" role="button" onClick={() => setLanding(true)}><span class="text">Continue</span></button>
           <div class="bg-animation">
             <div id="stars"></div>
@@ -266,59 +276,18 @@ function App(props) {
       >
         <div ref={nodeRef}>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={openendpoints}
+        onClose={handleCloseendpoints}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-            {" "}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Please make sure submission represents consensus of a group.
-            <br/><br/>
-            To help with that, check with other members if they see the same character sequence here: <b>{consensusId}</b>
-            <br/><br/>
-            If it's the same your submissions are identical (so you're in consensus).
-          </Typography>
-          <br></br>
-          
-
-          {accountname == "" ? (
-                       <button
-                       variant="contained"
-                       class="button-64 button-64-varwidth"
-                       //onClick={() => sign()}
-                       
-                       onClick={() => showModal()}
-                       
-                     >
-                       <span>
-                       Sign in
-                       </span>
-                     </button>
-                    ) : (
-                      <button
-                      variant="contained"
-                      class="button-64 button-64-varwidth"
-                      //onClick={() => sign()}
-                      
-                      onClick={() => vote()}
-                      
-                    >
-                      <span>
-                      Yeah baby, push it on chain!
-                      </span>
-                    </button>
-                      )}
-        </Box>
+        <EndpointSetter />
       </Modal>
+
       <div class="main-menu">
-      <button onClick={() => window.open(`https://google.com`, "_blank")} className="menu-trigger"  >
-                <span>Google</span>
-              </button>
-           
+      <button onClick={() => handleOpenendpoints(true)} className="menu-trigger"  >
+              <span>Choose endpoint</span>
+      </button>           
             {accountname == "" ? (
               <button onClick={() => showModal()} className="menu-trigger">
                 <span>Sign in</span>
