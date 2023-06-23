@@ -36,11 +36,11 @@ export default function EndpointSetter() {
                 >
                 <MenuItem value="https://chain.wax.io">Chain Wax</MenuItem>
                 <MenuItem value="https://wax.cryptolions.io">Cryptolions</MenuItem>
-                <MenuItem value="https://wax.eosdac.io">Eosdac</MenuItem>
+                <MenuItem value="https://wax.eosDAC.io">eosDAC</MenuItem>
                 <MenuItem value="https://wax.pink.qq">Pinkqq</MenuItem>
                 <MenuItem value="https://api.wax.bountyblok.io">Bountyblok</MenuItem>
                 <MenuItem value="https://wax.eoseoul.io">EOSeoul</MenuItem>
-                <MenuItem value="https://wax.eosusa.io">EOSUsa</MenuItem>
+                <MenuItem value="https://wax.eosusa.io">EOSUSA</MenuItem>
             </Select>
             </FormControl>
 

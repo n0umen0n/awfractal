@@ -104,7 +104,39 @@ function App(props) {
   const vote = async () => {
     if (activeUser) {
       // could be more elegant than if (vote6 == "")
-      if (inputs.vote6 == "") {
+      if (inputs.vote6 == "" && inputs.vote5 == "") {
+        let voterlist = [inputs.vote4, inputs.vote3, inputs.vote2, inputs.vote1];
+        try {
+          const transaction = {
+            actions: [
+              {
+                account: "pollpollpoll",
+                name: "submitcons",
+                authorization: [
+                  {
+                    actor: displayaccountname(), // use account that was logged in
+                    permission: "active",
+                  },
+                ],
+                data: {
+                  submitter: displayaccountname(),
+                  groupnr: parseInt(inputs.groupnumber),
+                  rankings: voterlist,
+                },
+              },
+             
+            ],
+          };
+          await activeUser.signTransaction(transaction, {
+            broadcast: true,
+            expireSeconds: 300,
+          });
+          swal_success(`Successfully submitted!`);
+        } catch (e) {
+          swal_error(e);
+        }
+      }
+      else if (inputs.vote6 == "") {
         let voterlist = [inputs.vote5, inputs.vote4, inputs.vote3, inputs.vote2, inputs.vote1];
         try {
           const transaction = {
@@ -135,7 +167,9 @@ function App(props) {
         } catch (e) {
           swal_error(e);
         }
-      } else {
+      } 
+       
+      else {
         let voterlist = [inputs.vote6, inputs.vote5, inputs.vote4, inputs.vote3, inputs.vote2, inputs.vote1];
         try {
           const transaction = {
@@ -283,11 +317,63 @@ function App(props) {
       >
         <EndpointSetter />
       </Modal>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+        <Typography id="modal-modal-title" variant="h6" component="h2">
+            {" "}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Please make sure submission represents consensus of a group.
+            <br/><br/>
+            To help with that, check with other members if they see the same character sequence here: <b>{consensusId}</b>
+            <br/><br/>
+            If it's the same your submissions are identical (so you're in consensus).
+          </Typography>
+          <br></br>
+          
+
+          {accountname == "" ? (
+                       <button
+                       variant="contained"
+                       class="button-64 button-64-varwidth"
+                       //onClick={() => sign()}
+                       
+                       onClick={() => showModal()}
+                       
+                     >
+                       <span>
+                       Sign in
+                       </span>
+                     </button>
+                    ) : (
+                      <button
+                      variant="contained"
+                      class="button-64 button-64-varwidth"
+                      //onClick={() => sign()}
+                      
+                      onClick={() => vote()}
+                      
+                    >
+                      <span>
+                      Push it on chain!
+                      </span>
+                    </button>
+                      )}
+        </Box>
+      </Modal>
 
       <div class="main-menu">
+      <button onClick={() => window.open(`https://wax.consortium.vote/community/nxzvzw2kfuvm`, "_blank")} className="menu-trigger"  >
+                <span>Propaganda Game</span>
+              </button>
       <button onClick={() => handleOpenendpoints(true)} className="menu-trigger"  >
               <span>Choose endpoint</span>
-      </button>           
+      </button>              
             {accountname == "" ? (
               <button onClick={() => showModal()} className="menu-trigger">
                 <span>Sign in</span>

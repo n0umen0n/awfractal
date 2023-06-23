@@ -16,7 +16,7 @@ import {
 
 const appName = "Fractal Voting";
 
-const endpointlist = ["https://api.waxsweden.org","https://wax.eosdac.io", "https://wax.pink.qq", "https://api.wax.bountyblok.io", "https://chain.wax.io", "https://wax.eosusa.io"]
+const endpointlist = ["https://wax.eosdac.io", "https://wax.pink.qq", "https://api.wax.bountyblok.io", "https://chain.wax.io", "https://wax.eosusa.io","https://wax.eosdac.io"]
 let endpoint;
 
 endpoint = localStorage.getItem("endpoint")
@@ -38,14 +38,19 @@ const chain = {
 const anchor = new Anchor([chain], {
   appName,
 });
-const wax = new Wax([chain]);
+//const wax = new Wax([chain]);
 
 
 const supportedChains = [chain];
+/*
 const supportedAuthenticators = [
   anchor, wax
 ];
+*/
 
+const supportedAuthenticators = [
+  anchor
+];
 const routing = (
   <BrowserRouter>
     <UALProvider
